@@ -10,7 +10,7 @@ $email = $_POST['email'];
 $message = $_POST['description'];
 
 $recaptcha = $_POST['g-recaptcha-response'];
-$secret_key = '6LdQ_UknAAAAAMPbWoaCcbQF7QdgLoovTu6e4XPx';
+$secret_key = $_ENV['RECAPTCHA_SECRET'];
 $url = 'https://www.google.com/recaptcha/api/siteverify?secret='
     . $secret_key . '&response=' . $recaptcha;
 
@@ -20,7 +20,7 @@ $response = json_decode($response);
 
 try {
     if ($response->success == true) {
-        $client = new PostmarkClient("47000e1c-4943-4fcc-8b33-c309c49e6a5e");
+        $client = new PostmarkClient($_ENV['POSTMARK_KEY']);
         $sendResult = $client->sendEmail(
             "desarrollo@ozudev.com",
             "desarrollo@ozudev.com",
@@ -31,7 +31,9 @@ try {
         // Getting the MessageID from the response
         header("Location:contact-success.php");
     } else {
-        echo '<script>alert("No pudimos verificar que no eres un robot. Recarga la pagina e ntenta otra vez.")</script>';
+        // echo "<script>alert('No pudimos verificar que no eres un robot. Recarga la pagina e ntenta otra vez.${secret_key}')</script>";
+        // header("Location:index.php");
+        echo "La secret key es " . $secret_key;
     }
 
 } catch (PostmarkException $ex) {
