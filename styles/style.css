@@ -2,6 +2,10 @@ html {
     scroll-behavior: smooth;
 }
 
+.grecaptcha-badge { 
+    visibility: hidden;
+}
+
 html,
 body {
     height: 100%;

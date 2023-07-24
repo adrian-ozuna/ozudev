@@ -93,7 +93,15 @@
                             placeholder="Descripcion, referencias, presupuesto..." required></textarea>
                     </div>
                     <div class="form-group">
-                        <button class="g-recaptcha button primary-button" data-sitekey="6LdQ_UknAAAAAAR-2mKg3Pf7LhMCo0dORzqNCwWt" data-callback='onSubmit'
+                        <p>
+                            This site is protected by reCAPTCHA and the Google
+                            <a href="https://policies.google.com/privacy">Privacy Policy</a> and
+                            <a href="https://policies.google.com/terms">Terms of Service</a> apply.
+                        </p>
+                    </div>
+                    <div class="form-group">
+                        <button class="g-recaptcha button primary-button"
+                            data-sitekey="6LdQ_UknAAAAAAR-2mKg3Pf7LhMCo0dORzqNCwWt" data-callback='onSubmit'
                             data-action='submit'>Enviar</button>
                     </div>
                 </form>
