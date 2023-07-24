@@ -8,9 +8,8 @@
         <div class="hero-content">
             <h1 class="hero-title">¿Estás listo para<br> impulsar tu negocio?</h1>
             <p class="hero-description">Proveemos a nuestros clientes con paginas web de<br> alta calidad.</p>
-            <a href="contactanos.php" class="button primary-button">Contactanos</a>
+            <a href="#contact-us-section" class="button primary-button">Contactanos</a>
         </div>
-        <!-- <img src="svg/svghero.svg" class="hero-svg" alt=""> -->
     </section>
     <section id="services-section">
         <div class="section-content">
