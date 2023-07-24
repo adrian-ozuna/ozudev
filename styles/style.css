@@ -2,7 +2,7 @@ html {
     scroll-behavior: smooth;
 }
 
-.grecaptcha-badge { 
+.grecaptcha-badge {
     visibility: hidden;
 }
 
@@ -20,6 +20,13 @@ body {
 body {
     font-family: 'Poppins', sans-serif;
     color: var(--default-text-color);
+}
+
+a[data-hs-anchor="true"] {
+    display: block;
+    position: relative;
+    visibility: hidden;
+    top: -216px;
 }
 
 input,
@@ -54,20 +61,23 @@ textarea {
     padding: 1rem 4rem 1rem 4rem;
 }
 
-.navbar-onScroll 
-.nav-links a, 
-.navbar-onScroll label
-{
+.navbar-onScroll .nav-links a,
+.navbar-onScroll label {
     color: var(--text-on-primary-color);
 }
 
-.navbar-onScroll 
-.logo svg path {
+.navbar-onScroll .logo svg path {
     fill: var(--text-on-primary-color);
 }
 
 .nav-links a {
     color: var(--default-text-color);
+}
+
+.navbar.responsive a {
+    float: none;
+    display: block;
+    text-align: left;
 }
 
 .menu {

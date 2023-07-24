@@ -11,7 +11,7 @@
             <a href="#contact-us-section" class="button primary-button">Contactanos</a>
         </div>
     </section>
-    <section id="services-section">
+    <section id="services-section" class="anchor-link">
         <div class="section-content">
             <h1 class="section-title">Lo que ofrecemos</h1>
             <div class="service-cards-container">
@@ -71,7 +71,7 @@
         </div>
     </section>
 
-    <section id="contact-us-section">
+    <section id="contact-us-section" class="anchor-link">
         <div class="section-content">
             <h1 class="section-title">
                 ¿Deseas realizar un proyecto?
