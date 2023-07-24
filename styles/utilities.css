@@ -1,0 +1,81 @@
+:root {
+    /* Colors */
+    --default-text-color: #1E1E1E;
+    --primary-color: #0C2645;
+    --primary-color-darker: #08192e;
+    --text-on-primary-color: #fff;
+    --secondary-color: #143D6D;
+    --secondary-color-darker: #0e2a49;
+    --faded: #b6b6b6;
+}
+
+.show-desktop {
+    display: block;
+}
+
+.show-mobile {
+    display: none;
+}
+
+@media(max-width: 768px) {
+    .show-desktop {
+        display: none;
+    }
+
+    .show-mobile {
+        display: block;
+    }
+}
+
+.section-title {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 0.5em;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.section-content {
+    padding: 4rem;
+}
+
+@media(max-width: 768px) {
+    .section-title {
+        font-size: 1.5rem;
+    }
+    
+    .section-content {
+        padding: 2rem;
+    }
+}
+
+.form-group {
+    margin-bottom: 1em;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.w-100 {
+    width: 100%;
+}
+
+.w-50 {
+    width: 50%;
+}
+
+.mx-auto  {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.d-block {
+    display: block;
+}
+
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
