@@ -54,6 +54,10 @@ class ComposerStaticInita68a15150e437884acfc29ae1f4cf871
         array (
             'Dotenv\\' => 7,
         ),
+        'B' => 
+        array (
+            'Brevo\\Client\\' => 13,
+        ),
     );
 
     public static $prefixDirsPsr4 = array (
@@ -137,6 +141,10 @@ class ComposerStaticInita68a15150e437884acfc29ae1f4cf871
         'Dotenv\\' => 
         array (
             0 => __DIR__ . '/..' . '/vlucas/phpdotenv/src',
+        ),
+        'Brevo\\Client\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/getbrevo/brevo-php/lib',
         ),
     );
 

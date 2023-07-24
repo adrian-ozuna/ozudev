@@ -1,22 +1,31 @@
 <?php return array(
     'root' => array(
-        'pretty_version' => '1.0.0+no-version-set',
-        'version' => '1.0.0.0',
+        'pretty_version' => 'dev-master',
+        'version' => 'dev-master',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => NULL,
+        'reference' => '07f125a0f6b2eacf8fcc6d03de5534aa463f5a70',
         'name' => '__root__',
         'dev' => true,
     ),
     'versions' => array(
         '__root__' => array(
-            'pretty_version' => '1.0.0+no-version-set',
-            'version' => '1.0.0.0',
+            'pretty_version' => 'dev-master',
+            'version' => 'dev-master',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => NULL,
+            'reference' => '07f125a0f6b2eacf8fcc6d03de5534aa463f5a70',
+            'dev_requirement' => false,
+        ),
+        'getbrevo/brevo-php' => array(
+            'pretty_version' => 'v1.0.2',
+            'version' => '1.0.2.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../getbrevo/brevo-php',
+            'aliases' => array(),
+            'reference' => '6c3286e62327277fd8445cddb057d44e850722c0',
             'dev_requirement' => false,
         ),
         'graham-campbell/result-type' => array(
