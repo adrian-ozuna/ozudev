@@ -31,9 +31,7 @@ try {
         // Getting the MessageID from the response
         header("Location:contact-success.php");
     } else {
-        // echo "<script>alert('No pudimos verificar que no eres un robot. Recarga la pagina e ntenta otra vez.${secret_key}')</script>";
-        // header("Location:index.php");
-        echo "La secret key es " . $secret_key;
+        echo "<script>alert('No pudimos verificar que no eres un robot. Recarga la pagina e intenta otra vez.${secret_key}')</script>";
     }
 
 } catch (PostmarkException $ex) {
