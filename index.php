@@ -78,7 +78,7 @@
                 ¿Deseas realizar un proyecto?
             </h1>
             <div class="contact-form d-block mx-auto">
-                <form action="send-email.php" method="post">
+                <form action="send-email.php" method="post" id="contact-form">
                     <div class="form-group">
                         <label for="name">Tu nombre</label>
                         <input type="text" name="name" id="name" placeholder="Nombre y apellidos" required>
@@ -89,18 +89,25 @@
                     </div>
                     <div class="form-group">
                         <label for="description">Descripcion del proyecto</label>
-                        <textarea name="description" id="description" cols="4" rows="15" placeholder="Descripcion, referencias, presupuesto..." required></textarea>
+                        <textarea name="description" id="description" cols="4" rows="15"
+                            placeholder="Descripcion, referencias, presupuesto..." required></textarea>
                     </div>
-                    <!-- <div class="form-group">
-                        <div class="g-recaptcha" data-sitekey="6LdQ_UknAAAAAAR-2mKg3Pf7LhMCo0dORzqNCwWt"></div>
-                    </div> -->
-                    <button class="button primary-button">Enviar</button>
+                    <div class="form-group">
+                        <button class="g-recaptcha button primary-button" data-sitekey="6LdQ_UknAAAAAAR-2mKg3Pf7LhMCo0dORzqNCwWt" data-callback='onSubmit'
+                            data-action='submit'>Enviar</button>
+                    </div>
                 </form>
             </div>
         </div>
     </section>
 
     <?php include 'footer.php'; ?>
+
+    <script>
+        function onSubmit(token) {
+            document.getElementById("contact-form").submit();
+        }
+    </script>
 
     <script src="js/stickyOnScroll.js"></script>
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>

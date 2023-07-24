@@ -148,6 +148,16 @@ class ComposerStaticInita68a15150e437884acfc29ae1f4cf871
         ),
     );
 
+    public static $prefixesPsr0 = array (
+        'P' => 
+        array (
+            'Postmark\\' => 
+            array (
+                0 => __DIR__ . '/..' . '/wildbit/postmark-php/src',
+            ),
+        ),
+    );
+
     public static $classMap = array (
         'Attribute' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
@@ -162,6 +172,7 @@ class ComposerStaticInita68a15150e437884acfc29ae1f4cf871
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInita68a15150e437884acfc29ae1f4cf871::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInita68a15150e437884acfc29ae1f4cf871::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInita68a15150e437884acfc29ae1f4cf871::$prefixesPsr0;
             $loader->classMap = ComposerStaticInita68a15150e437884acfc29ae1f4cf871::$classMap;
 
         }, null, ClassLoader::class);
