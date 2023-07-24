@@ -6,9 +6,6 @@ $name = $_POST["name"];
 $email = $_POST["email"];
 $description = $_POST["description"];
 
-$dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/');
-$dotenv->load();
-
 use PHPMailer\PHPMailer\PHPMailer;
 
 $mail = new PHPMailer(true);
