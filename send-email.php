@@ -17,15 +17,15 @@ try {
     $mail->isSMTP();
     $mail->SMTPAuth = true;
 
-    $mail->Host = $_ENV['SMTP_HOST'];
+    $mail->Host = getenv('SMTP_HOST');
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-    $mail->Port = $_ENV['SMTP_PORT'];
+    $mail->Port = getenv('SMTP_PORT');
 
-    $mail->Username = $_ENV["SMTP_USERNAME"];
-    $mail->Password = $_ENV["SMTP_PASSWORD"];
+    $mail->Username = getenv('SMTP_USERNAME');
+    $mail->Password = getenv('SMPT_PASSWORD');
 
-    $mail->setFrom($_ENV['SMTP_USERNAME'], $name);
-    $mail->addAddress($_ENV['SMTP_USERNAME']);
+    $mail->setFrom(getenv('SMTP_USERNAME'), $name);
+    $mail->addAddress(getenv('SMTP_USERNAME'));
 
     $mail->Subject = "Solicitud de proyecto por parte de ${name}";
     $mail->Body = "Correo de parte de: $email, $name\n Descripcion: $description";
