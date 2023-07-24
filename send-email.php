@@ -34,7 +34,7 @@ try {
         header("Location:contact-success.php");
     }
 } catch (Exception $e) {
-    echo "EMAIL SENDING FAILED. INFO: " . $mail->ErrorInfo;
+    echo "EMAIL SENDING FAILED. INFO: " . $mail->ErrorInfo . getenv('SMTP_PORT');
     include 'head.php';
     include 'header.php';
     echo '<p class="text-center">Hubo un error del lado del servidor. Por favor contactanos a traves de nuestro instagram @ozudev</p>';
