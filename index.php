@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <?php include 'head.php'; ?>
@@ -81,27 +84,48 @@
                     <div class="form-group">
                         <label for="name">Tu nombre</label>
                         <input type="text" name="name" id="name" placeholder="Nombre y apellidos" required>
+                        <?php
+                        if (isset($_SESSION['nameError'])) {
+                            echo '<span class="error">' . $_SESSION['nameError'] . '</span>';
+                        }
+                        ?>
                     </div>
                     <div class="form-group">
                         <label for="name">Tu correo</label>
                         <input type="text" name="email" id="email" placeholder="correo@dominio.com" required>
+                        <?php
+                        if (isset($_SESSION['emailError'])) {
+                            echo '<span class="error">' . $_SESSION['emailError'] . '</span>';
+                        }
+                        ?>
                     </div>
                     <div class="form-group">
                         <label for="description">Descripcion del proyecto</label>
                         <textarea name="description" id="description" cols="4" rows="15"
                             placeholder="Descripcion, referencias, presupuesto..." required></textarea>
+                        <?php
+                            if (isset($_SESSION['descriptionError'])) {
+                                echo '<span class="error">' . $_SESSION['descriptionError'] . '</span>';
+                            }
+                        ?>
                     </div>
                     <div class="form-group">
-                        <p>
-                            This site is protected by reCAPTCHA and the Google
-                            <a href="https://policies.google.com/privacy">Privacy Policy</a> and
-                            <a href="https://policies.google.com/terms">Terms of Service</a> apply.
-                        </p>
+                        <div class="h-captcha" data-sitekey="10000000-ffff-ffff-ffff-000000000001"></div>
+                        <?php
+                            if (isset($_SESSION['captchaError'])) {
+                                echo '<span class="error">' . $_SESSION['captchaError'] . '</span>';
+                            }
+                        ?>
                     </div>
                     <div class="form-group">
-                        <button class="g-recaptcha button primary-button"
-                            data-sitekey="6LdQ_UknAAAAAAR-2mKg3Pf7LhMCo0dORzqNCwWt" data-callback='onSubmit'
-                            data-action='submit'>Enviar</button>
+                        <input type="submit" class="button primary-button" name="submit" value="Enviar">
+                    </div>
+                    <div class="form-group">
+                        <?php
+                            if (isset($_SESSION['postmarkError'])) {
+                                echo '<span class="error">' . $_SESSION['postmarkError'] . '</span>';
+                            }
+                        ?>
                     </div>
                 </form>
             </div>
@@ -110,14 +134,11 @@
 
     <?php include 'footer.php'; ?>
 
-    <script>
-        function onSubmit(token) {
-            document.getElementById("contact-form").submit();
-        }
-    </script>
-
     <script src="js/stickyOnScroll.js"></script>
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script src="https://js.hcaptcha.com/1/api.js" async defer></script>
 </body>
 
 </html>
+<?php
+session_destroy();
+?>
