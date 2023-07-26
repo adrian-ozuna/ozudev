@@ -83,3 +83,7 @@
 .anchor-link {
     scroll-margin-top: 16rem;
 }
+
+.error {
+    color: red;
+}

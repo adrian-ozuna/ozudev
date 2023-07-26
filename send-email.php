@@ -1,59 +1,72 @@
 <?php
-
-//import the classes we'll be using and require the autoloader if it hasn't been already.
 require_once('./vendor/autoload.php');
-use Postmark\PostmarkClient;
 use Postmark\Models\PostmarkException;
+use Postmark\PostmarkClient;
+session_start();
 
-$name = $_POST['name'];
-$email = $_POST['email'];
-$message = $_POST['description'];
+$name = $email = $description = '';
 
-$recaptcha = $_POST['g-recaptcha-response'];
-$secret_key = $_ENV['RECAPTCHA_SECRET'];
-$url = 'https://www.google.com/recaptcha/api/siteverify?secret='
-    . $secret_key . '&response=' . $recaptcha;
+if (isset($_POST['submit'])) {
 
-$response = file_get_contents($url);
-$response = json_decode($response);
-
-
-try {
-    if ($response->success == true) {
-        $client = new PostmarkClient($_ENV['POSTMARK_KEY']);
-        $sendResult = $client->sendEmail(
-            "desarrollo@ozudev.com",
-            "desarrollo@ozudev.com",
-            "Nueva solicitud de proyecto por parte de ${name}",
-            "Nombre: ${name}\n Correo del solicitante: ${email}\n Descripcion: ${message}"
-        );
-
-        // Getting the MessageID from the response
-        header("Location:contact-success.php");
+    if (empty($_POST['name']) || strlen($_POST['name']) < 1) {
+        $_SESSION['nameError'] = 'Por favor introduzca su nombre.';
     } else {
-        echo "<script>alert('No pudimos verificar que no eres un robot. Recarga la pagina e intenta otra vez.${secret_key}')</script>";
+        $name = htmlspecialchars(trim($_POST['name']));
     }
 
-} catch (PostmarkException $ex) {
-    // If the client is able to communicate with the API in a timely fashion,
-    // but the message data is invalid, or there's a server error,
-    // a PostmarkException can be thrown.
+    if (empty($_POST['email']) || strlen($_POST['email']) < 1) {
+        $_SESSION['emailError'] = 'Por favor introduzca su email.';
+    } else {
+        $email = htmlspecialchars(trim($_POST['email']));
+    }
 
-    include 'head.php';
-    include 'header.php';
-    echo "Ocurrio un error en el servidor y no se pudo enviar el correo. Por favor contactanos en nuestro instagram a @ozudev";
-    echo $ex->httpStatusCode;
-    echo $ex->message;
-    echo $ex->postmarkApiErrorCode;
-    include 'footer.php';
+    if (empty($_POST['description']) || strlen($_POST['description']) < 1) {
+        $_SESSION['descriptionError'] = 'Por favor introduzca una descripcion para su proyecto.';
+    } else {
+        $description = htmlspecialchars(trim($_POST['description']));
+    }
 
-} catch (Exception $generalException) {
-    include 'head.php';
-    include 'header.php';
-    echo "Ocurrio un error en el servidor y no se pudo enviar el correo. Por favor contactanos en nuestro instagram a @ozudev";
-    // A general exception is thrown if the API
-    // was unreachable or times out.
-    include 'footer.php';
+    try {
+        $data = array(
+            'secret' => $_ENV['HCAPTCHA_SECRET_KEY'],
+            'response' => $_POST['h-captcha-response']
+        );
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, "https://hcaptcha.com/siteverify");
+        curl_setopt($ch, CURLOPT_POST, true);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($data));
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        $response = curl_exec($ch);
+        $responseData = json_decode($response);
+        if (!($responseData->success)) {
+            $_SESSION['captchaError'] = 'No pudimos verificar que no eres un robot. Intenta otra vez.';
+        }
+    } catch (Exception $e) {
+        $_SESSION['captchaError'] = 'No pudimos verificar que no eres un robot. Intenta otra vez.';
+    }
+
+    $errors =
+        isset($_SESSION['nameError']) ||
+        isset($_SESSION['emailError']) ||
+        isset($_SESSION['descriptionError']) ||
+        isset($_SESSION['captchaError']) ||
+        isset($_SESSION['postmarkError']);
+
+    if ($errors == true) {
+        header("location:index.php#contact-us-section");
+    } else {
+        try {
+            $client = new PostmarkClient($_ENV['POSTMARK_KEY']);
+            $sendResult = $client->sendEmail(
+                "desarrollo@ozudev.com",
+                "desarrollo@ozudev.com",
+                "Nueva solicitud de proyecto por parte de ${name}",
+                "Nombre: ${name}\n Correo del solicitante: ${email}\n Descripcion: ${description}"
+            );
+    
+            header("Location:contact-success.php");
+        } catch (PostmarkException $ex) {
+            $_SESSION['postmarkError'] = 'Ocurrio un error y no se pudo enviar el correo. Escribenos a desarrollo@ozudev.com';
+        }
+    }
 }
-
-?>
