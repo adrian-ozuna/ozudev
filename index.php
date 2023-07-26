@@ -110,7 +110,7 @@ session_start();
                         ?>
                     </div>
                     <div class="form-group">
-                        <div class="h-captcha" data-sitekey="10000000-ffff-ffff-ffff-000000000001"></div>
+                        <div class="h-captcha" data-sitekey="ea083fa3-a07a-481f-ba13-14a92ce9e7bd"></div>
                         <?php
                             if (isset($_SESSION['captchaError'])) {
                                 echo '<span class="error">' . $_SESSION['captchaError'] . '</span>';
