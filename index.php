@@ -27,7 +27,7 @@ session_start();
                         </div>
                     </div>
                     <div class="card-body">
-                        <h2>Desarrollo de paginas web</h2>
+                        <h2>Desarrollo de páginas web</h2>
                     </div>
                 </div>
 
