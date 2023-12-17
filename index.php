@@ -11,7 +11,7 @@ session_start();
         <div class="hero-content">
             <h1 class="hero-title">¿Estás listo para<br> impulsar tu negocio?</h1>
             <p class="hero-description">Proveemos a nuestros clientes con soluciones web de<br> alta calidad.</p>
-            <a href="#contact-us-section" class="button primary-button">Contactanos</a>
+            <a href="#contact-us-section" class="button primary-button">Contactános</a>
         </div>
     </section>
     <section id="services-section" class="anchor-link">
