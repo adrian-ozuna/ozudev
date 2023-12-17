@@ -25,7 +25,7 @@
             <div class="menu" style="padding: 2em;">
                 <li><a href="#">Inicio</a></li>
                 <li><a href="#services-section">Servicios</a></li>
-                <li><a href="#contact-us-section">Contactanos</a></li>
+                <li><a href="#contact-us-section">Contáctanos</a></li>
             </div>
         </ul>
     </nav>
