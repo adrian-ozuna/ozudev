@@ -22,25 +22,12 @@ session_start();
                     <div class="card-title">
                         <div class="card-icon">
                             <span class="material-symbols-outlined">
-                                design_services
-                            </span>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <h2>Diseño ui/ux</h2>
-                    </div>
-                </div>
-
-                <div class="service-card">
-                    <div class="card-title">
-                        <div class="card-icon">
-                            <span class="material-symbols-outlined">
                                 computer
                             </span>
                         </div>
                     </div>
                     <div class="card-body">
-                        <h2>Desarrollo frontend</h2>
+                        <h2>Desarrollo de paginas web</h2>
                     </div>
                 </div>
 
@@ -53,7 +40,7 @@ session_start();
                         </div>
                     </div>
                     <div class="card-body">
-                        <h2>Desarrollo backend</h2>
+                        <h2>Desarrollo de sistemas</h2>
                     </div>
                 </div>
 
@@ -66,7 +53,20 @@ session_start();
                         </div>
                     </div>
                     <div class="card-body">
-                        <h2>E-commerce</h2>
+                        <h2>Tiendas online</h2>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="card-title">
+                        <div class="card-icon">
+                            <span class="material-symbols-outlined">
+                                design_services
+                            </span>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <h2>Diseño de maquetados</h2>
                     </div>
                 </div>
 
