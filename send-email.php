@@ -39,10 +39,10 @@ if (isset($_POST['submit'])) {
         $response = curl_exec($ch);
         $responseData = json_decode($response);
         if (!($responseData->success)) {
-            $_SESSION['captchaError'] = responseData;
+            $_SESSION['captchaError'] = 'No pudimos verificar que no eres un robot. Intenta otra vez.';
         }
     } catch (Exception $e) {
-        $_SESSION['captchaError'] = e;
+        $_SESSION['captchaError'] = 'No pudimos verificar que no eres un robot. Intenta otra vez.';
     }
 
     $errors =
